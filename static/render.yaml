@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: nova
+    env: node
+    buildCommand: pnpm install
+    startCommand: node server.js
+    staticPublishPath: null
