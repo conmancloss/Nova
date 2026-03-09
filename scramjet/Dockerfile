@@ -4,11 +4,9 @@ WORKDIR /app
 
 RUN npm install -g pnpm
 
-COPY package.json pnpm-lock.yaml ./
+COPY . .
 
 RUN pnpm install --ignore-scripts
-
-COPY . .
 
 EXPOSE 1337
 
