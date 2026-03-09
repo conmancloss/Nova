@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "nodePackages.pnpm"]
+
+[phases.build]
+cmds = ["cd scramjet && pnpm install --ignore-scripts"]
+
+[start]
+cmd = "cd scramjet && node server.js"
