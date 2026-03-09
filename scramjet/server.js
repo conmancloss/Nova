@@ -29,8 +29,15 @@ const fastify = Fastify({
 	serverFactory: (handler) => {
 		return createServer()
 			.on("request", (req, res) => {
-				res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-				res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+				// Only set strict COEP on proxied routes, not static pages
+				const isProxy = req.url.startsWith("/bare/") || req.url.startsWith("/scram/") || req.url.startsWith("/wisp/");
+				if (isProxy) {
+					res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+					res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+				} else {
+					res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+					res.setHeader("Cross-Origin-Embedder-Policy", "unsafe-none");
+				}
 
 				if (bare.shouldRoute(req)) {
 					bare.routeRequest(req, res);
