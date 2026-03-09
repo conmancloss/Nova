@@ -1,1685 +1,224 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Nova</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400&display=swap"
-			rel="stylesheet"
-		/>
-		<style>
-			*,
-			*::before,
-			*::after {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-			:root {
-				--bg: #111111;
-				--s1: #181818;
-				--text: #d8d8d8;
-				--muted: #606060;
-				--dim: #404040;
-				--white: #f0f0f0;
-				--glass-bg: rgba(255, 255, 255, 0.045);
-				--glass-bg-h: rgba(255, 255, 255, 0.075);
-				--glass-b: rgba(255, 255, 255, 0.1);
-				--glass-bh: rgba(255, 255, 255, 0.18);
-			}
-			html,
-			body {
-				height: 100%;
-				overflow: hidden;
-				background: var(--bg);
-				color: var(--text);
-				font-family: "Lato", sans-serif;
-				font-weight: 300;
-			}
-			.amb {
-				position: fixed;
-				border-radius: 50%;
-				pointer-events: none;
-				z-index: 0;
-				filter: blur(80px);
-			}
-			.a1 {
-				width: 500px;
-				height: 500px;
-				background: radial-gradient(circle, #aaa 0%, transparent 70%);
-				top: -120px;
-				left: -100px;
-				opacity: 0.16;
-			}
-			.a2 {
-				width: 400px;
-				height: 400px;
-				background: radial-gradient(circle, #888 0%, transparent 70%);
-				bottom: -80px;
-				right: -60px;
-				opacity: 0.1;
-			}
-			body::before {
-				content: "";
-				position: fixed;
-				inset: 0;
-				background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-				pointer-events: none;
-				z-index: 200;
-				opacity: 0.5;
-			}
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="referrer" content="no-referrer"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="color-scheme" content="dark"/>
+  <meta name="theme-color" content="#141618"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" id="tab-favicon" href="favicon.png"/>
+  <title id="t">Home</title>
+  <link rel="stylesheet" href="/assets/css/global.css?v=8"/>
+  <link rel="stylesheet" href="/assets/css/h.css?v=02"/>
+  <link rel="stylesheet" href="/assets/css/nav.css?v=03"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6840529569014734" crossorigin="anonymous"></script>
+</head>
+<body class="center" onload="SplashT">
+  <div class="f-nav"></div>
+  <div id="particles-js">
+    <script rel="preload" src="https://cdn.jsdelivr.net/particles.js/2.0.0/"></script>
+    <div class="main">
+      <h1 class="title">Zero</h1>
+      <p id="splash"></p>
+      <div class="search-container">
+        <form id="fv" method="POST">
+          <input id="input" class="truncate" placeholder="Search or enter a URL" type="text" autocomplete="off" spellcheck="false"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/index-3.js"></script>
+  <script src="/assets/js/h1.js"></script>
+  <script src="./assets/mathematics/bundle.js?v=2025-04-15"></script>
+  <script src="./assets/mathematics/config.js?v=2025-04-15"></script>
+  <script src="/assets/js/m1.js"></script>
+  <!-- WHATS NEW POPUP -->
+  <div id="whats-new-overlay" style="display:none;">
+    <div id="whats-new-modal">
+      <div id="whats-new-badge">NEW</div>
+      <div id="whats-new-icon">🎮</div>
+      <h2 id="whats-new-title">What's New?</h2>
+      <div id="whats-new-divider"></div>
+      <div id="whats-new-content">
+        <div class="wn-version-tag">V6.0</div>
+        <p class="wn-headline">New UI — The Games Update</p>
+        <p class="wn-desc">A fresh new look and a massive expansion to the games library. Explore the redesigned interface built for speed, style, and play.</p>
+      </div>
+      <button id="whats-new-close">Got it</button>
+    </div>
+  </div>
+  <style>
+    #whats-new-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 11, 13, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      animation: wnFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes wnFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes wnSlideUp {
+      from { opacity: 0; transform: translateY(28px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #whats-new-modal {
+      position: relative;
+      width: min(420px, 90vw);
+      background: rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(40px) saturate(140%) brightness(108%);
+      -webkit-backdrop-filter: blur(40px) saturate(140%) brightness(108%);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+      border-radius: 28px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.13), inset 0 -1px 0 rgba(0,0,0,0.12);
+      padding: 36px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: wnSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+    }
+    #whats-new-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(200, 205, 214, 0.15);
+      border: 1px solid rgba(200, 205, 214, 0.28);
+      color: rgba(255,255,255,0.80);
+      font-family: "Outfit", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    #whats-new-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 0 14px rgba(200,205,214,0.25));
+    }
+    #whats-new-title {
+      font-family: "Outfit", sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.93);
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+      margin-bottom: 18px;
+    }
+    #whats-new-divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(200,205,214,0.35), transparent);
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    #whats-new-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+    .wn-version-tag {
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(200, 205, 214, 0.65);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 3px 12px;
+      border-radius: 999px;
+    }
+    .wn-headline {
+      font-family: "Outfit", sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.90);
+      letter-spacing: -0.2px;
+    }
+    .wn-desc {
+      font-family: "DM Sans", sans-serif;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.42);
+      line-height: 1.6;
+      max-width: 300px;
+    }
+    #whats-new-close {
+      font-family: "DM Sans", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-bottom-color: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      padding: 11px 36px;
+      cursor: pointer;
+      transition: background 0.22s ease, border-color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.12);
+      outline: none;
+    }
+    #whats-new-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(200, 205, 214, 0.30);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.16);
+    }
+    #whats-new-close:active {
+      transform: translateY(0px) scale(0.98);
+    }
+  </style>
+  <script>
+    (function() {
+      // Version key — update this string to show the popup again for all users
+      var POPUP_VERSION = "v6.0-games-update";
+      var storageKey = "whatsNewSeen_" + POPUP_VERSION;
+      var overlay = document.getElementById("whats-new-overlay");
+      var closeBtn = document.getElementById("whats-new-close");
 
-			#shell {
-				position: fixed;
-				inset: 0;
-				display: flex;
-				flex-direction: column;
-				z-index: 10;
-			}
+      if (!localStorage.getItem(storageKey)) {
+        overlay.style.display = "flex";
+      }
 
-			/* NAV */
-			.top-nav {
-				display: flex;
-				align-items: center;
-				gap: 0.3rem;
-				padding: 0.55rem 1.2rem;
-				background: rgba(17, 17, 17, 0.8);
-				backdrop-filter: blur(28px) saturate(1.4);
-				-webkit-backdrop-filter: blur(28px) saturate(1.4);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-				flex-shrink: 0;
-				position: relative;
-				z-index: 50;
-			}
-			.top-nav::after {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 5%;
-				right: 5%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(255, 255, 255, 0.09),
-					transparent
-				);
-				pointer-events: none;
-			}
-			.wordmark {
-				font-family: "Bebas Neue", sans-serif;
-				font-size: 1.5rem;
-				letter-spacing: 0.18em;
-				color: var(--white);
-				line-height: 1;
-				margin-right: 0.8rem;
-				flex-shrink: 0;
-			}
-			.ndiv {
-				width: 1px;
-				height: 20px;
-				background: rgba(255, 255, 255, 0.08);
-				margin: 0 0.2rem;
-				flex-shrink: 0;
-			}
-			.nav-tab {
-				font-family: "Lato", sans-serif;
-				font-weight: 300;
-				font-size: 0.72rem;
-				letter-spacing: 0.16em;
-				text-transform: uppercase;
-				color: var(--muted);
-				background: transparent;
-				border: 1px solid transparent;
-				border-radius: 7px;
-				padding: 0.3rem 0.75rem;
-				cursor: pointer;
-				transition:
-					color 0.2s,
-					background 0.2s,
-					border-color 0.2s;
-				flex-shrink: 0;
-			}
-			.nav-tab:hover {
-				color: var(--text);
-				background: var(--glass-bg);
-				border-color: var(--glass-b);
-			}
-			.nav-tab.active {
-				color: var(--white);
-				background: var(--glass-bg);
-				border-color: var(--glass-b);
-			}
-			.nspacer {
-				flex: 1;
-			}
-			.panic-btn {
-				font-family: "Lato", sans-serif;
-				font-weight: 400;
-				font-size: 0.68rem;
-				letter-spacing: 0.18em;
-				text-transform: uppercase;
-				color: var(--muted);
-				background: rgba(255, 255, 255, 0.03);
-				border: 1px solid rgba(255, 255, 255, 0.07);
-				border-radius: 7px;
-				padding: 0.3rem 0.75rem;
-				cursor: pointer;
-				transition: all 0.15s;
-				flex-shrink: 0;
-			}
-			.panic-btn:hover {
-				color: #ff6b6b;
-				border-color: rgba(255, 100, 100, 0.3);
-				background: rgba(255, 80, 80, 0.07);
-			}
+      function dismiss() {
+        overlay.style.transition = "opacity 0.3s ease";
+        overlay.style.opacity = "0";
+        setTimeout(function() { overlay.style.display = "none"; }, 300);
+        localStorage.setItem(storageKey, "1");
+      }
 
-			/* PAGES */
-			.page {
-				display: none;
-				flex: 1;
-				overflow: hidden;
-				flex-direction: column;
-				position: relative;
-				z-index: 10;
-			}
-			.page.active {
-				display: flex;
-			}
-
-			/* HOME */
-			#page-home {
-				align-items: center;
-				justify-content: center;
-				gap: 2.2rem;
-				animation: rise 0.5s ease both;
-			}
-			@keyframes rise {
-				from {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-			@keyframes fadeIn {
-				from {
-					opacity: 0;
-				}
-				to {
-					opacity: 1;
-				}
-			}
-			.headline {
-				text-align: center;
-			}
-			.headline h2 {
-				font-family: "Bebas Neue", sans-serif;
-				font-size: clamp(3rem, 9vw, 6.5rem);
-				letter-spacing: 0.08em;
-				color: var(--white);
-				line-height: 0.95;
-			}
-			.headline h2 em {
-				font-style: normal;
-				color: var(--dim);
-			}
-			.headline p {
-				margin-top: 0.8rem;
-				font-size: 0.75rem;
-				letter-spacing: 0.22em;
-				text-transform: uppercase;
-				color: var(--muted);
-			}
-			.search-wrap {
-				position: relative;
-				width: min(560px, 88vw);
-			}
-			.glass-pill {
-				display: flex;
-				align-items: center;
-				background: var(--glass-bg);
-				backdrop-filter: blur(28px) saturate(1.6);
-				-webkit-backdrop-filter: blur(28px) saturate(1.6);
-				border: 1px solid var(--glass-b);
-				border-radius: 100px;
-				overflow: hidden;
-				transition:
-					border-color 0.25s,
-					box-shadow 0.25s;
-				position: relative;
-			}
-			.glass-pill::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 10%;
-				right: 10%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(255, 255, 255, 0.16),
-					transparent
-				);
-				pointer-events: none;
-			}
-			.glass-pill::after {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background: linear-gradient(
-					160deg,
-					rgba(255, 255, 255, 0.05) 0%,
-					transparent 50%
-				);
-				border-radius: inherit;
-				pointer-events: none;
-			}
-			.glass-pill:focus-within {
-				border-color: rgba(255, 255, 255, 0.22);
-				box-shadow:
-					0 0 0 1px rgba(255, 255, 255, 0.06),
-					0 8px 32px rgba(0, 0, 0, 0.4);
-			}
-			.glass-pill input {
-				flex: 1;
-				padding: 0.85rem 1.4rem;
-				background: transparent;
-				border: none;
-				color: var(--white);
-				font-family: "Lato", sans-serif;
-				font-weight: 300;
-				font-size: 0.9rem;
-				outline: none;
-				position: relative;
-				z-index: 1;
-			}
-			.glass-pill input::placeholder {
-				color: var(--muted);
-			}
-			.glass-pill button {
-				margin-right: 6px;
-				background: rgba(255, 255, 255, 0.08);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 100px;
-				width: 34px;
-				height: 34px;
-				color: var(--text);
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				flex-shrink: 0;
-				transition: background 0.2s;
-				position: relative;
-				z-index: 1;
-			}
-			.glass-pill button:hover {
-				background: rgba(255, 255, 255, 0.14);
-				color: var(--white);
-			}
-			.quick {
-				display: flex;
-				gap: 0.45rem;
-				flex-wrap: wrap;
-				justify-content: center;
-				max-width: 500px;
-			}
-			.chip {
-				font-family: "Lato", sans-serif;
-				font-weight: 300;
-				font-size: 0.68rem;
-				letter-spacing: 0.14em;
-				text-transform: uppercase;
-				color: var(--muted);
-				background: var(--glass-bg);
-				backdrop-filter: blur(16px);
-				border: 1px solid var(--glass-b);
-				border-radius: 100px;
-				padding: 0.3rem 0.82rem;
-				cursor: pointer;
-				transition:
-					color 0.2s,
-					border-color 0.2s,
-					background 0.2s;
-				position: relative;
-				overflow: hidden;
-			}
-			.chip::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 15%;
-				right: 15%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(255, 255, 255, 0.1),
-					transparent
-				);
-			}
-			.chip:hover {
-				color: var(--white);
-				border-color: var(--glass-bh);
-				background: var(--glass-bg-h);
-			}
-
-			/* BROWSER */
-			#page-browser {
-				background: #fff;
-			}
-			.browser-bar {
-				display: flex;
-				align-items: center;
-				gap: 0.4rem;
-				padding: 0.4rem 0.7rem;
-				background: rgba(17, 17, 17, 0.8);
-				backdrop-filter: blur(24px);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-				flex-shrink: 0;
-			}
-			.nav-btn {
-				background: rgba(255, 255, 255, 0.05);
-				border: 1px solid rgba(255, 255, 255, 0.08);
-				color: var(--muted);
-				border-radius: 7px;
-				width: 28px;
-				height: 28px;
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				transition:
-					background 0.15s,
-					color 0.15s;
-				flex-shrink: 0;
-			}
-			.nav-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: var(--white);
-				border-color: rgba(255, 255, 255, 0.15);
-			}
-			.url-bar {
-				flex: 1;
-				padding: 0.28rem 0.85rem;
-				background: rgba(255, 255, 255, 0.04);
-				backdrop-filter: blur(12px);
-				border: 1px solid rgba(255, 255, 255, 0.08);
-				border-radius: 7px;
-				color: var(--text);
-				font-family: "Lato", sans-serif;
-				font-weight: 300;
-				font-size: 0.76rem;
-				outline: none;
-				transition: border-color 0.2s;
-			}
-			.url-bar:focus {
-				border-color: rgba(255, 255, 255, 0.16);
-				background: rgba(255, 255, 255, 0.07);
-			}
-			#frame-container {
-				flex: 1;
-				overflow: hidden;
-				position: relative;
-			}
-			#frame-container iframe {
-				width: 100%;
-				height: 100%;
-				border: none;
-			}
-			#loading {
-				position: absolute;
-				inset: 0;
-				background: var(--bg);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				opacity: 0;
-				pointer-events: none;
-				transition: opacity 0.2s;
-				z-index: 5;
-			}
-			#loading.show {
-				opacity: 1;
-				pointer-events: all;
-			}
-			.spinner {
-				width: 22px;
-				height: 22px;
-				border: 1.5px solid rgba(255, 255, 255, 0.1);
-				border-top-color: rgba(255, 255, 255, 0.5);
-				border-radius: 50%;
-				animation: spin 0.7s linear infinite;
-			}
-			@keyframes spin {
-				to {
-					transform: rotate(360deg);
-				}
-			}
-
-			/* CONTENT PAGES */
-			.content-page {
-				flex: 1;
-				overflow-y: auto;
-				padding: 2.5rem 3rem;
-				animation: fadeIn 0.35s ease both;
-			}
-			.content-page::-webkit-scrollbar {
-				width: 4px;
-			}
-			.content-page::-webkit-scrollbar-thumb {
-				background: rgba(255, 255, 255, 0.1);
-				border-radius: 2px;
-			}
-			.page-title {
-				font-family: "Bebas Neue", sans-serif;
-				font-size: 2.2rem;
-				letter-spacing: 0.12em;
-				color: var(--white);
-				margin-bottom: 0.4rem;
-			}
-			.page-subtitle {
-				font-size: 0.75rem;
-				letter-spacing: 0.18em;
-				text-transform: uppercase;
-				color: var(--muted);
-				margin-bottom: 2rem;
-			}
-			.section-label {
-				font-size: 0.68rem;
-				letter-spacing: 0.22em;
-				text-transform: uppercase;
-				color: var(--dim);
-				margin-bottom: 0.8rem;
-				margin-top: 1.8rem;
-			}
-			.section-label:first-of-type {
-				margin-top: 0;
-			}
-
-			/* CARDS */
-			.card-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-				gap: 1rem;
-			}
-			.card {
-				background: var(--glass-bg);
-				backdrop-filter: blur(20px);
-				border: 1px solid var(--glass-b);
-				border-radius: 14px;
-				padding: 1.3rem 1.2rem;
-				cursor: pointer;
-				transition:
-					background 0.2s,
-					border-color 0.2s,
-					transform 0.15s;
-				position: relative;
-				overflow: hidden;
-			}
-			.card::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 10%;
-				right: 10%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(255, 255, 255, 0.1),
-					transparent
-				);
-			}
-			.card::after {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background: linear-gradient(
-					150deg,
-					rgba(255, 255, 255, 0.04) 0%,
-					transparent 60%
-				);
-				border-radius: inherit;
-				pointer-events: none;
-			}
-			.card:hover {
-				background: var(--glass-bg-h);
-				border-color: var(--glass-bh);
-				transform: translateY(-2px);
-			}
-			.card-icon {
-				font-size: 1.7rem;
-				margin-bottom: 0.7rem;
-				display: block;
-			}
-			.card-name {
-				font-weight: 400;
-				font-size: 0.86rem;
-				color: var(--white);
-				margin-bottom: 0.2rem;
-				letter-spacing: 0.02em;
-			}
-			.card-desc {
-				font-size: 0.7rem;
-				color: var(--muted);
-			}
-
-			/* GAME GRID */
-			.game-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-				gap: 0.75rem;
-			}
-			.game-card {
-				background: var(--glass-bg);
-				backdrop-filter: blur(20px);
-				border: 1px solid var(--glass-b);
-				border-radius: 12px;
-				padding: 0.75rem;
-				cursor: pointer;
-				transition:
-					background 0.2s,
-					border-color 0.2s,
-					transform 0.15s;
-				position: relative;
-				overflow: hidden;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 0.5rem;
-				text-align: center;
-			}
-			.game-card::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 10%;
-				right: 10%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(255, 255, 255, 0.1),
-					transparent
-				);
-			}
-			.game-card:hover {
-				background: var(--glass-bg-h);
-				border-color: var(--glass-bh);
-				transform: translateY(-2px);
-			}
-			.game-card img {
-				width: 64px;
-				height: 64px;
-				object-fit: cover;
-				border-radius: 10px;
-				background: rgba(255, 255, 255, 0.05);
-			}
-			.game-card img.broken {
-				background: rgba(255, 255, 255, 0.06);
-				border-radius: 10px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 1.8rem;
-			}
-			.game-name {
-				font-size: 0.68rem;
-				color: var(--text);
-				font-weight: 400;
-				line-height: 1.3;
-				letter-spacing: 0.01em;
-			}
-
-			/* SETTINGS */
-			.settings-block {
-				background: var(--glass-bg);
-				backdrop-filter: blur(20px);
-				border: 1px solid var(--glass-b);
-				border-radius: 14px;
-				overflow: hidden;
-				margin-bottom: 1rem;
-				position: relative;
-			}
-			.settings-block::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 10%;
-				right: 10%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(255, 255, 255, 0.1),
-					transparent
-				);
-			}
-			.setting-row {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: 1rem 1.3rem;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-				gap: 1rem;
-			}
-			.setting-row:last-child {
-				border-bottom: none;
-			}
-			.setting-label {
-				font-size: 0.85rem;
-				color: var(--text);
-			}
-			.setting-desc {
-				font-size: 0.7rem;
-				color: var(--muted);
-				margin-top: 0.15rem;
-			}
-			.setting-value {
-				font-size: 0.8rem;
-				color: var(--muted);
-			}
-			.key-selector {
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-			}
-			.key-display {
-				background: rgba(255, 255, 255, 0.07);
-				border: 1px solid rgba(255, 255, 255, 0.14);
-				border-radius: 7px;
-				padding: 0.3rem 0.8rem;
-				font-family: "Bebas Neue", sans-serif;
-				font-size: 1rem;
-				letter-spacing: 0.1em;
-				color: var(--white);
-				min-width: 44px;
-				text-align: center;
-			}
-			.key-change-btn {
-				font-family: "Lato", sans-serif;
-				font-weight: 300;
-				font-size: 0.68rem;
-				letter-spacing: 0.14em;
-				text-transform: uppercase;
-				color: var(--muted);
-				background: var(--glass-bg);
-				border: 1px solid var(--glass-b);
-				border-radius: 6px;
-				padding: 0.28rem 0.65rem;
-				cursor: pointer;
-				transition:
-					color 0.2s,
-					border-color 0.2s;
-			}
-			.key-change-btn:hover {
-				color: var(--text);
-				border-color: var(--glass-bh);
-			}
-			.key-change-btn.listening {
-				color: #ffd97a;
-				border-color: rgba(255, 217, 122, 0.3);
-				animation: pulse 1s ease infinite;
-			}
-			@keyframes pulse {
-				0%,
-				100% {
-					opacity: 1;
-				}
-				50% {
-					opacity: 0.5;
-				}
-			}
-			.about-logo {
-				font-family: "Bebas Neue", sans-serif;
-				font-size: 3rem;
-				letter-spacing: 0.2em;
-				color: var(--white);
-				margin-bottom: 0.3rem;
-			}
-			.about-version {
-				font-size: 0.72rem;
-				letter-spacing: 0.2em;
-				text-transform: uppercase;
-				color: var(--muted);
-				margin-bottom: 1.2rem;
-			}
-			.about-tagline {
-				font-size: 0.85rem;
-				color: var(--dim);
-				line-height: 1.6;
-				max-width: 400px;
-			}
-			.about-meta {
-				display: flex;
-				gap: 2rem;
-				margin-top: 1.5rem;
-				flex-wrap: wrap;
-			}
-			.meta-item .mlabel {
-				font-size: 0.65rem;
-				letter-spacing: 0.2em;
-				text-transform: uppercase;
-				color: var(--dim);
-				margin-bottom: 0.2rem;
-			}
-			.meta-item .mvalue {
-				font-size: 0.82rem;
-				color: var(--muted);
-			}
-		</style>
-	</head>
-	<body>
-		<div class="amb a1"></div>
-		<div class="amb a2"></div>
-
-		<div id="shell">
-			<nav class="top-nav">
-				<div class="wordmark">NOVA</div>
-				<div class="ndiv"></div>
-				<button class="nav-tab active" data-page="home">Home</button>
-				<button class="nav-tab" data-page="browser">Browser</button>
-				<button class="nav-tab" data-page="games">Games</button>
-				<button class="nav-tab" data-page="apps">Apps</button>
-				<button class="nav-tab" data-page="settings">Settings</button>
-				<div class="nspacer"></div>
-				<button class="panic-btn" id="panic-btn">⚠ Panic</button>
-			</nav>
-
-			<!-- HOME -->
-			<div class="page active" id="page-home">
-				<div class="headline">
-					<h2>BROWSE<br /><em>FREE</em>LY</h2>
-					<p>Unrestricted access to the open web</p>
-				</div>
-				<div class="search-wrap">
-					<div class="glass-pill">
-						<input
-							id="search-input"
-							type="text"
-							placeholder="Search or enter a URL..."
-							autocomplete="off"
-							autocorrect="off"
-							spellcheck="false"
-						/>
-						<button id="go-btn">
-							<svg
-								width="14"
-								height="14"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<line x1="5" y1="12" x2="19" y2="12" />
-								<polyline points="12 5 19 12 12 19" />
-							</svg>
-						</button>
-					</div>
-				</div>
-				<div class="quick">
-					<button class="chip" onclick="goTo('https://google.com')">
-						Google
-					</button>
-					<button class="chip" onclick="goTo('https://youtube.com')">
-						YouTube
-					</button>
-					<button class="chip" onclick="goTo('https://reddit.com')">
-						Reddit
-					</button>
-					<button class="chip" onclick="goTo('https://discord.com')">
-						Discord
-					</button>
-					<button class="chip" onclick="goTo('https://instagram.com')">
-						Instagram
-					</button>
-					<button class="chip" onclick="goTo('https://twitter.com')">
-						Twitter
-					</button>
-					<button class="chip" onclick="goTo('https://spotify.com')">
-						Spotify
-					</button>
-				</div>
-			</div>
-
-			<!-- BROWSER -->
-			<div class="page" id="page-browser">
-				<div class="browser-bar">
-					<button class="nav-btn" id="back-btn">
-						<svg
-							width="12"
-							height="12"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<polyline points="15 18 9 12 15 6" />
-						</svg>
-					</button>
-					<button class="nav-btn" id="fwd-btn">
-						<svg
-							width="12"
-							height="12"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<polyline points="9 18 15 12 9 6" />
-						</svg>
-					</button>
-					<button class="nav-btn" id="reload-btn">
-						<svg
-							width="12"
-							height="12"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<polyline points="23 4 23 10 17 10" />
-							<path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
-						</svg>
-					</button>
-					<input
-						class="url-bar"
-						id="url-bar"
-						type="text"
-						spellcheck="false"
-						autocomplete="off"
-						placeholder="Search or enter URL..."
-					/>
-				</div>
-				<div id="frame-container">
-					<div id="loading"><div class="spinner"></div></div>
-				</div>
-			</div>
-
-			<!-- GAMES -->
-			<div class="page" id="page-games">
-				<div class="content-page">
-					<div class="page-title">GAMES</div>
-					<div class="page-subtitle">Play anywhere, anytime</div>
-					<div class="game-grid">
-						<div
-							class="game-card"
-							onclick="goTo('https://forms.gle/uRgGdh1ASXe3ig4C7')"
-						>
-							<img src="/assets/media/icons/request.webp" />
-							<div class="game-name">! [NEW] Request A Game</div>
-						</div>
-						<div class="game-card" onclick="goTo('avoids.surge.sh/game.html')">
-							<img
-								src="https://zero-2.vercel.app/assets/media/favicon/main.png"
-							/>
-							<div class="game-name">Minecraft 1.12.2 Void</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://prod-web-pool.miniclip.com/mc?localmc')"
-						>
-							<img
-								src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/8_Ball_Pool_cover.jpg/220px-8_Ball_Pool_cover.jpg"
-							/>
-							<div class="game-name">8 ball pool</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://1games.io/game/geometry-lite/')"
-						>
-							<img src="https://m.media-amazon.com/images/I/61mVIP6Oo1L.png" />
-							<div class="game-name">Geo Dash</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('culinaryschools.org/kids-games/coffee-shop/game.php')"
-						>
-							<img
-								src="https://www.coolmathgames.com/sites/default/files/coffee-shop-game-icon.png"
-							/>
-							<div class="game-name">coffee shop</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://luna.amazon.com/')">
-							<img src="/assets/media/icons/amazon-luna.webp" />
-							<div class="game-name">Amazon Luna</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://newgrounds.com/')">
-							<img src="/assets/media/icons/newgrounds.webp" />
-							<div class="game-name">Newgrounds</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://steampowered.com/')">
-							<img src="/assets/media/icons/steam.webp" />
-							<div class="game-name">Steam</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/630d7b91a96145949f86128ce8f1c4eb/?gd_sdk_referrer_url=https://helixjump2.com/helix-jump.embed')"
-						>
-							<img src="/assets/media/icons/helixjump.webp" />
-							<div class="game-name">Helix Jump</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/rvvASMiM/3b79a8537ebc414fb4f9672a9b8c68c8/index.html')"
-						>
-							<img src="/assets/media/icons/snowrider3d.webp" />
-							<div class="game-name">Snow Rider 3D</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://territorial.io')">
-							<img src="/assets/media/icons/territorialio.webp" />
-							<div class="game-name">Territorial.io</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://stickmanhookonline.io/game/stickman-hook/')"
-						>
-							<img src="/assets/media/icons/stickmanhook.webp" />
-							<div class="game-name">Stickman Hook</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://tunnelrushgame.io/game/tunnel-rush/')"
-						>
-							<img src="/assets/media/icons/tunnelrush.webp" />
-							<div class="game-name">Tunnel Rush</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://googlefeud.com/')">
-							<img src="/assets/media/icons/googlefeud.webp" />
-							<div class="game-name">Google Feud</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://classic.minecraft.net')"
-						>
-							<img src="/assets/media/icons/mc.webp" />
-							<div class="game-name">Minecraft Classic</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.gameflare.com/embed/learn-to-fly-3/')"
-						>
-							<img src="/assets/media/icons/learntofly3.webp" />
-							<div class="game-name">Learn to Fly 3</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://yohoho.io/')">
-							<img src="/assets/media/icons/yohoho.webp" />
-							<div class="game-name">YoHoHo.io</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/62a72f2da7cb4b609579a47653546e6a/?gd_sdk_referrer_url=https%3A%2F%2Fwww.twoplayergames.org%2Fgame%2Ftime-shooter-2')"
-						>
-							<img src="/assets/media/icons/timeshooter2.webp" />
-							<div class="game-name">Time Shooter 2</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/2dee9d404697435aa76111eb4015e1d5/')"
-						>
-							<img src="/assets/media/icons/mergefruit.webp" />
-							<div class="game-name">Merge Fruit</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://abinbins.github.io/a7/jetpack-joyride/')"
-						>
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlXwelM4mWFCoBcTvH8e1JgftqAR_Ssi3b9n3COCC3BuN8sTDpBSjhtDJ6Tv6fk1dbIkfP62PoJL7OjliSW1jA3MOfvMDJhaYTW17a6pU&s=10"
-							/>
-							<div class="game-name">Jetpack Joyride</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://arcader.com/roms/doom.html')"
-						>
-							<img src="/assets/media/icons/DOOM.webp" />
-							<div class="game-name">DOOM</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://sussygamedeveloper.github.io/FNAF2/')"
-						>
-							<img src="/assets/media/icons/FNAF2.webp" />
-							<div class="game-name">FNAF 2</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://sussygamedeveloper.github.io/fnaf3/')"
-						>
-							<img src="/assets/media/icons/FNAF3.webp" />
-							<div class="game-name">FNAF 3</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.coolmathgames.com/0-run-3/play')"
-						>
-							<img src="/assets/media/icons/run3.webp" />
-							<div class="game-name">Run 3</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamemonetize.co/4vppm8m74ngl2mwfmixoxmd9ljc9ddms/?gamedomain=subway-surfers.gg')"
-						>
-							<img src="/assets/media/icons/SF.webp" />
-							<div class="game-name">Subway Surfers: rio</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/rvvASMiM/f1c451e586c04b4c8cba01b0c50d9090/index.html')"
-						>
-							<img src="/assets/media/icons/SVI.webp" />
-							<div class="game-name">Survivor.io</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://slope-online.github.io/slope/')"
-						>
-							<img src="/assets/media/icons/slope.webp" />
-							<div class="game-name">Slope</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://play.geforcenow.com/mall/#/deeplink?game-id=46bfab06-d864-465d-9e56-2d9e45cdee0a')"
-						>
-							<img src="/assets/media/icons/fortnite.webp" />
-							<div class="game-name">Fortnite (Geforce NOW)</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://1v1-lolunblocked.gitlab.io/file/')"
-						>
-							<img src="/assets/media/icons/1v1-lol.webp" />
-							<div class="game-name">1v1.LOL</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://rocketgoal.io/')">
-							<img src="/assets/media/icons/2D-Rocket-League.webp" />
-							<div class="game-name">Rocket Goal</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://8ball-pool.io')">
-							<img src="/assets/media/icons/8ball.webp" />
-							<div class="game-name">8 Ball Pool</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://amongusonline.bitbucket.io/file/')"
-						>
-							<img src="/assets/media/icons/scratch-among-us.webp" />
-							<div class="game-name">Among Us</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/rvvASMiM/bf1268dccb5d43e7970bb3edaa54afc8/index.html')"
-						>
-							<img src="/assets/media/icons/br.webp" />
-							<div class="game-name">Basket Random</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://xlegends.github.io/bitlife/')"
-						>
-							<img src="/assets/media/icons/bitlife.webp" />
-							<div class="game-name">Bitlife</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://en.gameslol.net/data/bloons-td-4/index.html')"
-						>
-							<img src="/assets/media/icons/btd4.webp" />
-							<div class="game-name">BTD 4</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://chess.com')">
-							<img src="/assets/media/icons/chess.webp" />
-							<div class="game-name">Chess.com</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://clusterrush.io/game/cluster-rush/')"
-						>
-							<img
-								src="https://cluster-rush-games.github.io/uploads/2025/5/cluster-rush-1.png"
-							/>
-							<div class="game-name">Cluster Rush</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://unblocked-cookie-clicker.pages.dev/unblocked/')"
-						>
-							<img src="/assets/media/icons/cookieclicker.webp" />
-							<div class="game-name">Cookie Clicker</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://azgames.io/game/crossy-road/')"
-						>
-							<img src="/assets/media/icons/cr.webp" />
-							<div class="game-name">Crossy Road</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://dogeminer.se')">
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJwVdgkJSuD93sFv07J1dwpyDwqBfCgYjG8A&s"
-							/>
-							<div class="game-name">Doge Miner</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.mortgagecalculator.org/money-games/drift-boss/')"
-						>
-							<img src="/assets/media/icons/db.webp" />
-							<div class="game-name">Drift Boss</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://jonasz-o.itch.io/fallout2remake3d')"
-						>
-							<img src="/assets/media/icons/fallout2.webp" />
-							<div class="game-name">Fallout 2</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://uploads.ungrounded.net/alternate/1528000/1528775_alternate_113347_r141.zip/')"
-						>
-							<img src="/assets/media/icons/fnf.webp" />
-							<div class="game-name">Friday Night Funkin'</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://fnf.kdata1.com/lofi-funkin/2/')"
-						>
-							<img src="/assets/media/icons/lofi.webp" />
-							<div class="game-name">FNF - Lofi Mod</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://fnf.kdata1.com/snorlax/1/')"
-						>
-							<img src="/assets/media/icons/snorlax.webp" />
-							<div class="game-name">FNF VS. Snorlax</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://just-fall-online.github.io/file/')"
-						>
-							<img src="/assets/media/icons/just-fall-lol.webp" />
-							<div class="game-name">JustFall.LOL</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://play.geforcenow.com')"
-						>
-							<img src="/assets/media/icons/geforce-now.webp" />
-							<div class="game-name">Geforce NOW</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://hole-io.com/')">
-							<img src="/assets/media/icons/hole.webp" />
-							<div class="game-name">Hole.IO</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.gameslol.net/data/waflash/index.php?g=635')"
-						>
-							<img src="/assets/media/icons/ltf_idle.webp" />
-							<div class="game-name">Learn To Fly Idle</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://g.igroutka.ru/games/164/TbxXHpG4s8efPVaM/3/monkey_mart/')"
-						>
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgx91Nnl2fQlxjXL6NWSUaWHRaDLSgSmdI_Q&s"
-							/>
-							<div class="game-name">Monkey Mart</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://crazy-cattle.co/game/crazy-cattle/')"
-						>
-							<img
-								src="https://crazy-cattle.co/cache/data/image/options/crazy-cattle-f170x40.webp"
-							/>
-							<div class="game-name">Crazzy Cattle</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/rvvASMiM/5b0abd4c0faa4f5eb190a9a16d5a1b4c/index.html')"
-						>
-							<img src="/assets/media/icons/mx3m.webp" />
-							<div class="game-name">Moto X3M</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.onlinesoccermanager.com/')"
-						>
-							<img src="/assets/media/icons/osm.webp" />
-							<div class="game-name">Online Soccer M.</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://paper-io.com/')">
-							<img src="/assets/media/icons/paperio.webp" />
-							<div class="game-name">Paper.io</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://ubg77.github.io/pixel-shooter/')"
-						>
-							<img src="/assets/media/icons/pixel-shooter.webp" />
-							<div class="game-name">Pixel Shooter</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.google.com/logos/2019/july4th19/r6/july4th19.html')"
-						>
-							<img src="/assets/media/icons/googlebaseball.webp" />
-							<div class="game-name">Google Baseball</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://f.kbhgames.com/RS/game.php?r=//f.kbhgames.com/2018/swf/dondeal2.swf&w=640&h=480&warnsupport=true')"
-						>
-							<img src="/assets/media/icons/deal-or-no-deal.webp" />
-							<div class="game-name">Deal or No Deal</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://slither.io/')">
-							<img src="/assets/media/icons/slither.webp" />
-							<div class="game-name">Slither.io</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://smashkarts.io/')">
-							<img src="/assets/media/icons/smashkarts.webp" />
-							<div class="game-name">Smash Karts</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://games.crazygames.com/en_US/snowball-io/index.html')"
-						>
-							<img src="/assets/media/icons/snowball.webp" />
-							<div class="game-name">Snowball.io</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.stumbleguys.com/play')"
-						>
-							<img src="/assets/media/icons/stumble-guys.webp" />
-							<div class="game-name">Stumble Guys</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://chat.kongregate.com/gamez/0027/1653/live/index.html?kongregate_game_version=1554392772')"
-						>
-							<img src="/assets/media/icons/supplychainlogo.webp" />
-							<div class="game-name">Supply Chain Idle</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://freegamesunblocked76.github.io/retro-bowl/')"
-						>
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROIf7c2HY84vkcxMtNYlfq_4I4xkEfOJB76g&s"
-							/>
-							<div class="game-name">Retro Bowl</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://kiomet.com')">
-							<img src="/assets/media/icons/kiomet.webp" />
-							<div class="game-name">Kiomet</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://vex7.gitlab.io/file/')"
-						>
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyOtI72a6lJ75gsxFV-IH5VlVoruWhPo6TCA&s"
-							/>
-							<div class="game-name">Vex 7</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://windows96.net')">
-							<img src="/assets/media/icons/windows96.webp" />
-							<div class="game-name">Windows 96</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://html5.gamedistribution.com/55084fdaacba49cbaeeead2464733b72/')"
-						>
-							<img src="/assets/media/icons/hw.webp" />
-							<div class="game-name">Happy Wheels</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://googlesnakemods.com/v/current/')"
-						>
-							<img src="/assets/media/icons/snake.webp" />
-							<div class="game-name">Google Snake Modded</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.mortgagecalculator.org/money-games/idle-startup-tycoon/')"
-						>
-							<img src="/assets/media/icons/idlestartup.webp" />
-							<div class="game-name">Idle Startup Tycoon</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://www.twoplayergames.org/')"
-						>
-							<img src="/assets/media/icons/tpg.webp" />
-							<div class="game-name">Two Player Games</div>
-						</div>
-						<div class="game-card" onclick="goTo('https://guesstheprice.net/')">
-							<img src="https://guesstheprice.net/assets/guesstheprice.png" />
-							<div class="game-name">Guess the Price</div>
-						</div>
-						<div
-							class="game-card"
-							onclick="goTo('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')"
-						>
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjerU4Rosv13Bd4r2mhaCM0Og12MU3Y_qWPA&s"
-							/>
-							<div class="game-name">Omega Nugget Clicker</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- APPS -->
-			<div class="page" id="page-apps">
-				<div class="content-page">
-					<div class="page-title">APPS</div>
-					<div class="page-subtitle">Game sites & platforms</div>
-					<div class="section-label">Platforms</div>
-					<div class="card-grid">
-						<div class="card" onclick="goTo('https://www.crazygames.com')">
-							<span class="card-icon">🎮</span>
-							<div class="card-name">CrazyGames</div>
-							<div class="card-desc">Hundreds of free browser games</div>
-						</div>
-						<div class="card" onclick="goTo('https://poki.com')">
-							<span class="card-icon">🕹️</span>
-							<div class="card-name">Poki</div>
-							<div class="card-desc">Top-rated free online games</div>
-						</div>
-						<div class="card" onclick="goTo('https://www.coolmathgames.com')">
-							<span class="card-icon">🧠</span>
-							<div class="card-name">Cool Math Games</div>
-							<div class="card-desc">Puzzles, strategy & more</div>
-						</div>
-						<div class="card" onclick="goTo('https://www.miniclip.com')">
-							<span class="card-icon">⚡</span>
-							<div class="card-name">Miniclip</div>
-							<div class="card-desc">Classic browser gaming</div>
-						</div>
-						<div class="card" onclick="goTo('https://www.addictinggames.com')">
-							<span class="card-icon">🔥</span>
-							<div class="card-name">Addicting Games</div>
-							<div class="card-desc">Action, arcade & puzzle</div>
-						</div>
-						<div class="card" onclick="goTo('https://html5games.com')">
-							<span class="card-icon">🌐</span>
-							<div class="card-name">HTML5 Games</div>
-							<div class="card-desc">No Flash required</div>
-						</div>
-						<div class="card" onclick="goTo('https://www.kongregate.com')">
-							<span class="card-icon">👾</span>
-							<div class="card-name">Kongregate</div>
-							<div class="card-desc">Indie & community games</div>
-						</div>
-						<div class="card" onclick="goTo('https://itch.io')">
-							<span class="card-icon">🎲</span>
-							<div class="card-name">itch.io</div>
-							<div class="card-desc">Indie games & experiments</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- SETTINGS -->
-			<div class="page" id="page-settings">
-				<div class="content-page">
-					<div class="page-title">SETTINGS</div>
-					<div class="page-subtitle">Configure Nova</div>
-
-					<div class="section-label">Panic Key</div>
-					<div class="settings-block">
-						<div class="setting-row">
-							<div>
-								<div class="setting-label">Panic Key</div>
-								<div class="setting-desc">
-									Press this key anywhere to instantly redirect to Google
-									Classroom
-								</div>
-							</div>
-							<div class="key-selector">
-								<div class="key-display" id="key-display">P</div>
-								<button class="key-change-btn" id="key-change-btn">
-									Change
-								</button>
-							</div>
-						</div>
-						<div class="setting-row">
-							<div>
-								<div class="setting-label">Panic Destination</div>
-								<div class="setting-desc">
-									Where Nova redirects when panic key is pressed
-								</div>
-							</div>
-							<div class="setting-value">Google Classroom</div>
-						</div>
-					</div>
-
-					<div class="section-label">About</div>
-					<div class="settings-block">
-						<div
-							class="setting-row"
-							style="
-								flex-direction: column;
-								align-items: flex-start;
-								gap: 0.6rem;
-							"
-						>
-							<div class="about-logo">NOVA</div>
-							<div class="about-version">Version 1.0.0 — Private Browser</div>
-							<div class="about-tagline">
-								Nova is a private, unrestricted web browser powered by Scramjet.
-								Browse freely without restrictions.
-							</div>
-							<div class="about-meta">
-								<div class="meta-item">
-									<div class="mlabel">Engine</div>
-									<div class="mvalue">Scramjet v2.0.0-alpha</div>
-								</div>
-								<div class="meta-item">
-									<div class="mlabel">Transport</div>
-									<div class="mvalue">Epoxy / Wisp</div>
-								</div>
-								<div class="meta-item">
-									<div class="mlabel">Built</div>
-									<div class="mvalue">2026</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script src="/baremux/index.js"></script>
-		<script src="/scram/scramjet.all.js"></script>
-		<script>
-			const { ScramjetController } = $scramjetLoadController();
-			const scramjet = new ScramjetController({
-				files: {
-					wasm: "/scram/scramjet.wasm.wasm",
-					all: "/scram/scramjet.all.js",
-					sync: "/scram/scramjet.sync.js",
-				},
-				flags: {
-					rewriterLogs: false,
-					scramitize: false,
-					cleanErrors: true,
-					sourcemaps: false,
-				},
-			});
-			scramjet.init();
-			navigator.serviceWorker.register("/sw.js");
-
-			const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
-			const wispURL =
-				(location.protocol === "https:" ? "wss" : "ws") +
-				"://" +
-				location.host +
-				"/wisp/";
-			connection.setTransport("/epoxy/index.mjs", [{ wisp: wispURL }]);
-
-			const frame = scramjet.createFrame();
-			document.getElementById("frame-container").appendChild(frame.frame);
-
-			// Page routing
-			let frameLoaded = false;
-			document.querySelectorAll(".nav-tab").forEach((t) =>
-				t.addEventListener("click", () => {
-					document
-						.querySelectorAll(".nav-tab")
-						.forEach((x) => x.classList.remove("active"));
-					document
-						.querySelectorAll(".page")
-						.forEach((x) => x.classList.remove("active"));
-					t.classList.add("active");
-					document
-						.getElementById("page-" + t.dataset.page)
-						.classList.add("active");
-					if (t.dataset.page === "browser" && !frameLoaded) {
-						frameLoaded = true;
-						loading.classList.add("show");
-						urlBar.value = "https://www.google.com";
-						frame.go("https://www.google.com");
-					}
-				})
-			);
-
-			// Navigation
-			const urlBar = document.getElementById("url-bar");
-			const loading = document.getElementById("loading");
-
-			function resolveURL(input) {
-				input = input.trim();
-				if (!input) return null;
-				if (/^https?:\/\//i.test(input)) return input;
-				if (/^[\w-]+(\.[a-z]{2,})(\/.*)?$/i.test(input))
-					return "https://" + input;
-				return "https://www.google.com/search?q=" + encodeURIComponent(input);
-			}
-
-			function navigate(url) {
-				const r = resolveURL(url);
-				if (!r) return;
-				frameLoaded = true;
-				// Switch to browser tab
-				document
-					.querySelectorAll(".nav-tab")
-					.forEach((x) =>
-						x.classList.toggle("active", x.dataset.page === "browser")
-					);
-				document
-					.querySelectorAll(".page")
-					.forEach((x) =>
-						x.classList.toggle("active", x.id === "page-browser")
-					);
-				loading.classList.add("show");
-				urlBar.value = r;
-				frame.go(r);
-			}
-
-			window.goTo = navigate;
-
-			frame.addEventListener("urlchange", (e) => {
-				if (e.url) urlBar.value = e.url;
-				loading.classList.remove("show");
-			});
-
-			const searchIn = document.getElementById("search-input");
-			searchIn.addEventListener("keydown", (e) => {
-				if (e.key === "Enter") navigate(searchIn.value);
-			});
-			document
-				.getElementById("go-btn")
-				.addEventListener("click", () => navigate(searchIn.value));
-			urlBar.addEventListener("keydown", (e) => {
-				if (e.key === "Enter") navigate(urlBar.value);
-			});
-			document
-				.getElementById("back-btn")
-				.addEventListener("click", () => frame.back());
-			document
-				.getElementById("fwd-btn")
-				.addEventListener("click", () => frame.forward());
-			document.getElementById("reload-btn").addEventListener("click", () => {
-				loading.classList.add("show");
-				frame.reload();
-			});
-
-			// Panic key
-			let panicKey = localStorage.getItem("nova_panic_key") || "p";
-			const keyDisplay = document.getElementById("key-display");
-			const keyChangeBtn = document.getElementById("key-change-btn");
-			keyDisplay.textContent = panicKey.toUpperCase();
-
-			let listening = false;
-			keyChangeBtn.addEventListener("click", () => {
-				listening = true;
-				keyChangeBtn.textContent = "Press a key...";
-				keyChangeBtn.classList.add("listening");
-			});
-
-			document.addEventListener("keydown", (e) => {
-				if (listening) {
-					if (e.key === "Escape") {
-						listening = false;
-						keyChangeBtn.textContent = "Change";
-						keyChangeBtn.classList.remove("listening");
-						return;
-					}
-					panicKey = e.key.toLowerCase();
-					localStorage.setItem("nova_panic_key", panicKey);
-					keyDisplay.textContent = e.key.toUpperCase();
-					listening = false;
-					keyChangeBtn.textContent = "Change";
-					keyChangeBtn.classList.remove("listening");
-					return;
-				}
-				const tag = document.activeElement?.tagName;
-				if (tag === "INPUT" || tag === "TEXTAREA") return;
-				if (e.key.toLowerCase() === panicKey)
-					window.location.href = "https://classroom.google.com";
-			});
-
-			document.getElementById("panic-btn").addEventListener("click", () => {
-				window.location.href = "https://classroom.google.com";
-			});
-
-			// Fix broken game images
-			document.querySelectorAll(".game-card img").forEach((img) => {
-				img.addEventListener("error", () => {
-					const span = document.createElement("span");
-					span.style.cssText =
-						"width:64px;height:64px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;";
-					span.textContent = "🎮";
-					img.replaceWith(span);
-				});
-			});
-
-			window.addEventListener("load", () => searchIn.focus());
-		</script>
-	</body>
+      closeBtn.addEventListener("click", dismiss);
+      overlay.addEventListener("click", function(e) {
+        if (e.target === overlay) dismiss();
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") dismiss();
+      });
+    })();
+  </script>
+  <!-- DO NOT REMOVE-->
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js",new Date());gtag("config","G-WKJQ5QHQTJ");
+  </script>
+  <!-- DO NOT REMOVE-->
+</body>
 </html>
