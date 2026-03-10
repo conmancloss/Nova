@@ -622,7 +622,7 @@
 				scramjet.init();
 				const connection = new BareMux.BareMuxConnection("/static/lib/worker.js");
 				const wispURL = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
-				await connection.setTransport("/static/mod/index.mjs", ["/bare/"]);
+				await connection.setTransport("/static/transport/index.mjs", [{ wisp: `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/wisp/` }]);
 				const frame = scramjet.createFrame();
 				document.getElementById("frame-container").appendChild(frame.frame);
 				_frame = frame;
