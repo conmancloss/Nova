@@ -2,20 +2,33 @@
 <html lang="en">
 	<head>
 	<script>
-		// About:blank cloaking — uses ?cloaked=1 to prevent popup loop
+		// About:blank cloaking — fetches Nova HTML and writes it directly into about:blank popup
 		(function() {
 			const params = new URLSearchParams(window.location.search);
-			if (!params.has('cloaked')) {
-				// Not yet cloaked — open in about:blank popup with ?cloaked=1
-				const url = window.location.href + (window.location.search ? '&' : '?') + 'cloaked=1';
-				const popup = window.open('', '_blank', 'width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0,toolbar=0,menubar=0,scrollbars=0');
-				if (popup) {
+			if (params.has('cloaked')) return; // already inside cloaked popup, do nothing
+
+			const novaURL = window.location.href;
+
+			// Fetch the full Nova page HTML
+			fetch(novaURL)
+				.then(r => r.text())
+				.then(html => {
+					// Open a blank popup
+					const popup = window.open('about:blank', '_blank',
+						'width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0,toolbar=0,menubar=0,scrollbars=0,status=0');
+					if (!popup) return; // popup blocked, do nothing — page loads normally
 					popup.document.open();
-					popup.document.write('<scr'+'ipt>window.location.replace(' + JSON.stringify(url) + ')<\/scr'+'ipt>');
+					// Write the full Nova HTML into the blank popup
+					// Inject ?cloaked=1 marker so it doesn't loop
+					const patched = html.replace('</head>', '<scr'+'ipt>window.__cloaked=true;</scr'+'ipt></head>');
+					popup.document.write(patched);
 					popup.document.close();
+					// Send original tab somewhere innocent
 					window.location.replace('https://classroom.google.com');
-				}
-			}
+				})
+				.catch(() => {
+					// Fetch failed — just load normally
+				});
 		})();
 	</script>
 		<meta charset="UTF-8" />
