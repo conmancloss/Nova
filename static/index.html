@@ -385,8 +385,8 @@
 			</div>
 		</div>
 
-		<script src="/baremux/index.js" onerror="console.error('Failed to load /baremux/index.js')"></script>
-		<script src="/scram/scramjet.all.js" onerror="console.error('Failed to load /scram/scramjet.all.js'); window._scramjetMissing = true;"></script>
+		<script src="/static/lib/index.js" onerror="console.error('Failed to load /static/lib/index.js')"></script>
+		<script src="/static/js/scramjet.all.js" onerror="console.error('Failed to load /static/js/scramjet.all.js'); window._scramjetMissing = true;"></script>
 		<script>
 		// ── Constants ─────────────────────────────────────────────────
 		const BUILD_VERSION = "1.1.0";
@@ -610,19 +610,19 @@
 		// ── Scramjet init ─────────────────────────────────────────────
 		(async () => {
 			try {
-				if (window._scramjetMissing || typeof $scramjetLoadController === "undefined") throw new Error("/scram/scramjet.all.js failed to load.");
+				if (window._scramjetMissing || typeof $scramjetLoadController === "undefined") throw new Error("/static/js/scramjet.all.js failed to load.");
 				const { ScramjetController } = $scramjetLoadController();
 				const scramjet = new ScramjetController({
-					files: { wasm: "/scram/scramjet.wasm.wasm", all: "/scram/scramjet.all.js", sync: "/scram/scramjet.sync.js" },
+					files: { wasm: "/static/js/scramjet.wasm.wasm", all: "/static/js/scramjet.all.js", sync: "/static/js/scramjet.sync.js" },
 					flags: { rewriterLogs: false, scramitize: false, cleanErrors: true, sourcemaps: false },
 				});
 				const swReg = await navigator.serviceWorker.register("/sw.js", { scope: "/" });
 				await navigator.serviceWorker.ready;
 				if (swReg.waiting) { swReg.waiting.postMessage({ type: "SKIP_WAITING" }); await new Promise(r => setTimeout(r, 500)); }
 				scramjet.init();
-				const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+				const connection = new BareMux.BareMuxConnection("/static/lib/worker.js");
 				const wispURL = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
-				await connection.setTransport("/epoxy/index.mjs", [{ wisp: wispURL }]);
+				await connection.setTransport("/static/transport/index.mjs", [{ wisp: wispURL }]);
 				const frame = scramjet.createFrame();
 				document.getElementById("frame-container").appendChild(frame.frame);
 				_frame = frame;

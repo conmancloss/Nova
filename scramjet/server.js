@@ -59,32 +59,32 @@ fastify.register(fastifyStatic, {
 });
 fastify.register(fastifyStatic, {
 	root: join(fileURLToPath(new URL(".", import.meta.url)), "./dist"),
-	prefix: "/scram/",
+	prefix: "/static/js/",
 	decorateReply: false,
 });
 fastify.register(fastifyStatic, {
 	root: join(fileURLToPath(new URL(".", import.meta.url)), "./assets"),
-	prefix: "/scramjet-assets/",
+	prefix: "/static/assets/",
 	decorateReply: false,
 });
 fastify.register(fastifyStatic, {
 	root: baremuxPath,
-	prefix: "/baremux/",
+	prefix: "/static/lib/",
 	decorateReply: false,
 });
 fastify.register(fastifyStatic, {
 	root: epoxyPath,
-	prefix: "/epoxy/",
+	prefix: "/static/transport/",
 	decorateReply: false,
 });
 fastify.register(fastifyStatic, {
 	root: libcurlPath,
-	prefix: "/libcurl/",
+	prefix: "/static/curl/",
 	decorateReply: false,
 });
 fastify.register(fastifyStatic, {
 	root: bareModulePath,
-	prefix: "/baremod/",
+	prefix: "/static/mod/",
 	decorateReply: false,
 });
 
