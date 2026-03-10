@@ -64,7 +64,7 @@ fastify.register(fastifyStatic, {
 });
 fastify.register(fastifyStatic, {
 	root: join(fileURLToPath(new URL(".", import.meta.url)), "./assets"),
-	prefix: "/assets/",
+	prefix: "/scramjet-assets/",
 	decorateReply: false,
 });
 fastify.register(fastifyStatic, {
