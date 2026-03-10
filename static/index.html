@@ -1,41 +1,11 @@
 <!doctype html>
 <html lang="en">
 	<head>
-	<script>
-		// About:blank cloaking — fetches Nova HTML and writes it directly into about:blank popup
-		(function() {
-			const params = new URLSearchParams(window.location.search);
-			if (params.has('cloaked')) return; // already inside cloaked popup, do nothing
-
-			const novaURL = window.location.href;
-
-			// Fetch the full Nova page HTML
-			fetch(novaURL)
-				.then(r => r.text())
-				.then(html => {
-					// Open a blank popup
-					const popup = window.open('about:blank', '_blank',
-						'width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0,toolbar=0,menubar=0,scrollbars=0,status=0');
-					if (!popup) return; // popup blocked, do nothing — page loads normally
-					popup.document.open();
-					// Write the full Nova HTML into the blank popup
-					// Inject ?cloaked=1 marker so it doesn't loop
-					const patched = html.replace('</head>', '<scr'+'ipt>window.__cloaked=true;</scr'+'ipt></head>');
-					popup.document.write(patched);
-					popup.document.close();
-					// Send original tab somewhere innocent
-					window.location.replace('https://classroom.google.com');
-				})
-				.catch(() => {
-					// Fetch failed — just load normally
-				});
-		})();
-	</script>
 		<meta charset="UTF-8" />
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230a0a14'/><path d='M50,22 C51,36 64,49 78,50 C64,51 51,64 50,78 C49,64 36,51 22,50 C36,49 49,36 50,22Z' fill='%23ffffff' opacity='0.9'/><circle cx='50' cy='50' r='3.5' fill='%23ffffff'/></svg>">
 		<link rel="shortcut icon" href="/assets/favicon.svg">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Google Classroom</title>
+		<title>Nova</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
 		<style>
