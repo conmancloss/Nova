@@ -2,19 +2,21 @@
 <html lang="en">
 	<head>
 	<script>
-		// About:blank cloaking — reopens Nova inside about:blank popup so school filter sees nothing
-		if (window.location === window.top.location && !window.__cloaked) {
-			const url = window.location.href;
-			const popup = window.open('', '_blank', 'width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0,toolbar=0,menubar=0,scrollbars=0');
-			if (popup) {
-				popup.__cloaked = true;
-				popup.document.open();
-				popup.document.write('<scr'+'ipt>window.__cloaked=true;window.location.replace(' + JSON.stringify(url) + ')<\/scr'+'ipt>');
-				popup.document.close();
-				// Redirect original tab to something innocent
-				window.location.replace('https://classroom.google.com');
+		// About:blank cloaking — uses ?cloaked=1 to prevent popup loop
+		(function() {
+			const params = new URLSearchParams(window.location.search);
+			if (!params.has('cloaked')) {
+				// Not yet cloaked — open in about:blank popup with ?cloaked=1
+				const url = window.location.href + (window.location.search ? '&' : '?') + 'cloaked=1';
+				const popup = window.open('', '_blank', 'width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0,toolbar=0,menubar=0,scrollbars=0');
+				if (popup) {
+					popup.document.open();
+					popup.document.write('<scr'+'ipt>window.location.replace(' + JSON.stringify(url) + ')<\/scr'+'ipt>');
+					popup.document.close();
+					window.location.replace('https://classroom.google.com');
+				}
 			}
-		}
+		})();
 	</script>
 		<meta charset="UTF-8" />
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230a0a14'/><path d='M50,22 C51,36 64,49 78,50 C64,51 51,64 50,78 C49,64 36,51 22,50 C36,49 49,36 50,22Z' fill='%23ffffff' opacity='0.9'/><circle cx='50' cy='50' r='3.5' fill='%23ffffff'/></svg>">
