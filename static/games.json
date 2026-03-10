@@ -1,74 +1,357 @@
 [
-  { "name": "! [NEW] Request A Game", "url": "https://forms.gle/uRgGdh1ASXe3ig4C7", "image": "/assets/icons/request.webp" },
-  { "name": "Minecraft 1.12.2 Void", "url": "https://avoids.surge.sh/game.html", "image": "/assets/icons/mc.webp" },
-  { "name": "8 Ball Pool", "url": "https://prod-web-pool.miniclip.com/mc?localmc", "image": "/assets/icons/8ball.webp" },
-  { "name": "Geo Dash", "url": "https://1games.io/game/geometry-lite/", "image": "/assets/icons/1.webp" },
-  { "name": "Coffee Shop", "url": "https://culinaryschools.org/kids-games/coffee-shop/game.php", "image": "/assets/icons/coolmath.webp" },
-  { "name": "Amazon Luna", "url": "https://luna.amazon.com/", "image": "/assets/icons/amazon-luna.webp" },
-  { "name": "Newgrounds", "url": "https://newgrounds.com/", "image": "/assets/icons/newgrounds.webp" },
-  { "name": "Steam", "url": "https://steampowered.com/", "image": "/assets/icons/steam.webp" },
-  { "name": "Helix Jump", "url": "https://html5.gamedistribution.com/630d7b91a96145949f86128ce8f1c4eb/", "image": "/assets/icons/helixjump.webp" },
-  { "name": "Snow Rider 3D", "url": "https://html5.gamedistribution.com/rvvASMiM/3b79a8537ebc414fb4f9672a9b8c68c8/index.html", "image": "/assets/icons/snowrider3d.webp" },
-  { "name": "Territorial.io", "url": "https://territorial.io", "image": "/assets/icons/territorialio.webp" },
-  { "name": "Stickman Hook", "url": "https://stickmanhookonline.io/game/stickman-hook/", "image": "/assets/icons/stickmanhook.webp" },
-  { "name": "Tunnel Rush", "url": "https://tunnelrushgame.io/game/tunnel-rush/", "image": "/assets/icons/tunnelrush.webp" },
-  { "name": "Google Feud", "url": "https://googlefeud.com/", "image": "/assets/icons/googlefeud.webp" },
-  { "name": "Minecraft Classic", "url": "https://classic.minecraft.net", "image": "/assets/icons/mc.webp" },
-  { "name": "Learn to Fly 3", "url": "https://www.gameflare.com/embed/learn-to-fly-3/", "image": "/assets/icons/learntofly3.webp" },
-  { "name": "YoHoHo.io", "url": "https://yohoho.io/", "image": "/assets/icons/yohoho.webp" },
-  { "name": "Time Shooter 2", "url": "https://html5.gamedistribution.com/62a72f2da7cb4b609579a47653546e6a/", "image": "/assets/icons/timeshooter2.webp" },
-  { "name": "Merge Fruit", "url": "https://html5.gamedistribution.com/2dee9d404697435aa76111eb4015e1d5/", "image": "/assets/icons/mergefruit.webp" },
-  { "name": "Jetpack Joyride", "url": "https://abinbins.github.io/a7/jetpack-joyride/", "image": "/assets/icons/jetpackjoyride.webp" },
-  { "name": "DOOM", "url": "https://arcader.com/roms/doom.html", "image": "/assets/icons/DOOM.webp" },
-  { "name": "FNAF 2", "url": "https://sussygamedeveloper.github.io/FNAF2/", "image": "/assets/icons/FNAF2.webp" },
-  { "name": "FNAF 3", "url": "https://sussygamedeveloper.github.io/fnaf3/", "image": "/assets/icons/FNAF3.webp" },
-  { "name": "Run 3", "url": "https://www.coolmathgames.com/0-run-3/play", "image": "/assets/icons/run3.webp" },
-  { "name": "Subway Surfers: Rio", "url": "https://html5.gamemonetize.co/4vppm8m74ngl2mwfmixoxmd9ljc9ddms/", "image": "/assets/icons/SF.webp" },
-  { "name": "Survivor.io", "url": "https://html5.gamedistribution.com/rvvASMiM/f1c451e586c04b4c8cba01b0c50d9090/index.html", "image": "/assets/icons/SVI.webp" },
-  { "name": "Slope", "url": "https://slope-online.github.io/slope/", "image": "/assets/icons/slope.webp" },
-  { "name": "Fortnite (Geforce NOW)", "url": "https://play.geforcenow.com/mall/#/deeplink?game-id=46bfab06-d864-465d-9e56-2d9e45cdee0a", "image": "/assets/icons/fortnite.webp" },
-  { "name": "1v1.LOL", "url": "https://1v1-lolunblocked.gitlab.io/file/", "image": "/assets/icons/1v1-lol.webp" },
-  { "name": "Rocket Goal", "url": "https://rocketgoal.io/", "image": "/assets/icons/2D-Rocket-League.webp" },
-  { "name": "8 Ball Pool", "url": "https://8ball-pool.io", "image": "/assets/icons/8ball.webp" },
-  { "name": "Among Us", "url": "https://amongusonline.bitbucket.io/file/", "image": "/assets/icons/scratch-among-us.webp" },
-  { "name": "Basket Random", "url": "https://html5.gamedistribution.com/rvvASMiM/bf1268dccb5d43e7970bb3edaa54afc8/index.html", "image": "/assets/icons/br.webp" },
-  { "name": "Bitlife", "url": "https://xlegends.github.io/bitlife/", "image": "/assets/icons/bitlife.webp" },
-  { "name": "BTD 4", "url": "https://en.gameslol.net/data/bloons-td-4/index.html", "image": "/assets/icons/btd4.webp" },
-  { "name": "Chess.com", "url": "https://chess.com", "image": "/assets/icons/chess.webp" },
-  { "name": "Cluster Rush", "url": "https://clusterrush.io/game/cluster-rush/", "image": "/assets/icons/cluster-rush.webp" },
-  { "name": "Cookie Clicker", "url": "https://unblocked-cookie-clicker.pages.dev/unblocked/", "image": "/assets/icons/cookieclicker.webp" },
-  { "name": "Crossy Road", "url": "https://azgames.io/game/crossy-road/", "image": "/assets/icons/cr.webp" },
-  { "name": "Doge Miner", "url": "https://dogeminer.se", "image": "/assets/icons/doge-miner-1.webp" },
-  { "name": "Drift Boss", "url": "https://www.mortgagecalculator.org/money-games/drift-boss/", "image": "/assets/icons/db.webp" },
-  { "name": "Fallout 2", "url": "https://jonasz-o.itch.io/fallout2remake3d", "image": "/assets/icons/fallout2.webp" },
-  { "name": "Friday Night Funkin'", "url": "https://uploads.ungrounded.net/alternate/1528000/1528775_alternate_113347_r141.zip/", "image": "/assets/icons/fnf.webp" },
-  { "name": "FNF - Lofi Mod", "url": "https://fnf.kdata1.com/lofi-funkin/2/", "image": "/assets/icons/lofi.webp" },
-  { "name": "FNF VS. Snorlax", "url": "https://fnf.kdata1.com/snorlax/1/", "image": "/assets/icons/snorlax.webp" },
-  { "name": "JustFall.LOL", "url": "https://just-fall-online.github.io/file/", "image": "/assets/icons/just-fall-lol.webp" },
-  { "name": "Geforce NOW", "url": "https://play.geforcenow.com", "image": "/assets/icons/geforce-now.webp" },
-  { "name": "Hole.IO", "url": "https://hole-io.com/", "image": "/assets/icons/hole.webp" },
-  { "name": "Learn To Fly Idle", "url": "https://www.gameslol.net/data/waflash/index.php?g=635", "image": "/assets/icons/ltf_idle.webp" },
-  { "name": "Monkey Mart", "url": "https://g.igroutka.ru/games/164/TbxXHpG4s8efPVaM/3/monkey_mart/", "image": "/assets/icons/mm.webp" },
-  { "name": "Crazy Cattle", "url": "https://crazy-cattle.co/game/crazy-cattle/", "image": "/assets/icons/crazy.webp" },
-  { "name": "Moto X3M", "url": "https://html5.gamedistribution.com/rvvASMiM/5b0abd4c0faa4f5eb190a9a16d5a1b4c/index.html", "image": "/assets/icons/mx3m.webp" },
-  { "name": "Online Soccer M.", "url": "https://www.onlinesoccermanager.com/", "image": "/assets/icons/osm.webp" },
-  { "name": "Paper.io", "url": "https://paper-io.com/", "image": "/assets/icons/paperio.webp" },
-  { "name": "Pixel Shooter", "url": "https://ubg77.github.io/pixel-shooter/", "image": "/assets/icons/pixel-shooter.webp" },
-  { "name": "Google Baseball", "url": "https://www.google.com/logos/2019/july4th19/r6/july4th19.html", "image": "/assets/icons/googlebaseball.webp" },
-  { "name": "Deal or No Deal", "url": "https://f.kbhgames.com/RS/game.php?r=//f.kbhgames.com/2018/swf/dondeal2.swf", "image": "/assets/icons/deal-or-no-deal.webp" },
-  { "name": "Slither.io", "url": "https://slither.io/", "image": "/assets/icons/slither.webp" },
-  { "name": "Smash Karts", "url": "https://smashkarts.io/", "image": "/assets/icons/smashkarts.webp" },
-  { "name": "Snowball.io", "url": "https://games.crazygames.com/en_US/snowball-io/index.html", "image": "/assets/icons/snowball.webp" },
-  { "name": "Stumble Guys", "url": "https://www.stumbleguys.com/play", "image": "/assets/icons/stumble-guys.webp" },
-  { "name": "Supply Chain Idle", "url": "https://chat.kongregate.com/gamez/0027/1653/live/index.html", "image": "/assets/icons/supplychainlogo.webp" },
-  { "name": "Retro Bowl", "url": "https://freegamesunblocked76.github.io/retro-bowl/", "image": "/assets/icons/retro.webp" },
-  { "name": "Kiomet", "url": "https://kiomet.com", "image": "/assets/icons/kiomet.webp" },
-  { "name": "Vex 7", "url": "https://vex7.gitlab.io/file/", "image": "/assets/icons/vex7.webp" },
-  { "name": "Windows 96", "url": "https://windows96.net", "image": "/assets/icons/windows96.webp" },
-  { "name": "Happy Wheels", "url": "https://html5.gamedistribution.com/55084fdaacba49cbaeeead2464733b72/", "image": "/assets/icons/hw.webp" },
-  { "name": "Google Snake Modded", "url": "https://googlesnakemods.com/v/current/", "image": "/assets/icons/snake.webp" },
-  { "name": "Idle Startup Tycoon", "url": "https://www.mortgagecalculator.org/money-games/idle-startup-tycoon/", "image": "/assets/icons/idlestartup.webp" },
-  { "name": "Two Player Games", "url": "https://www.twoplayergames.org/", "image": "/assets/icons/tpg.webp" },
-  { "name": "Guess the Price", "url": "https://guesstheprice.net/", "image": "/assets/icons/google.webp" },
-  { "name": "Omega Nugget Clicker", "url": "https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec", "image": "/assets/icons/clickerheros.webp" }
+  {
+    "name": "! [NEW] Request A Game",
+    "url": "https://forms.gle/uRgGdh1ASXe3ig4C7",
+    "image": "/icons/request.webp"
+  },
+  {
+    "name": "Minecraft 1.12.2 Void",
+    "url": "https://avoids.surge.sh/game.html",
+    "image": "/icons/mc.webp"
+  },
+  {
+    "name": "8 Ball Pool",
+    "url": "https://prod-web-pool.miniclip.com/mc?localmc",
+    "image": "/icons/8ball.webp"
+  },
+  {
+    "name": "Geo Dash",
+    "url": "https://1games.io/game/geometry-lite/",
+    "image": "/icons/1.webp"
+  },
+  {
+    "name": "Coffee Shop",
+    "url": "https://culinaryschools.org/kids-games/coffee-shop/game.php",
+    "image": "/icons/coolmath.webp"
+  },
+  {
+    "name": "Amazon Luna",
+    "url": "https://luna.amazon.com/",
+    "image": "/icons/amazon-luna.webp"
+  },
+  {
+    "name": "Newgrounds",
+    "url": "https://newgrounds.com/",
+    "image": "/icons/newgrounds.webp"
+  },
+  {
+    "name": "Steam",
+    "url": "https://steampowered.com/",
+    "image": "/icons/steam.webp"
+  },
+  {
+    "name": "Helix Jump",
+    "url": "https://html5.gamedistribution.com/630d7b91a96145949f86128ce8f1c4eb/",
+    "image": "/icons/helixjump.webp"
+  },
+  {
+    "name": "Snow Rider 3D",
+    "url": "https://html5.gamedistribution.com/rvvASMiM/3b79a8537ebc414fb4f9672a9b8c68c8/index.html",
+    "image": "/icons/snowrider3d.webp"
+  },
+  {
+    "name": "Territorial.io",
+    "url": "https://territorial.io",
+    "image": "/icons/territorialio.webp"
+  },
+  {
+    "name": "Stickman Hook",
+    "url": "https://stickmanhookonline.io/game/stickman-hook/",
+    "image": "/icons/stickmanhook.webp"
+  },
+  {
+    "name": "Tunnel Rush",
+    "url": "https://tunnelrushgame.io/game/tunnel-rush/",
+    "image": "/icons/tunnelrush.webp"
+  },
+  {
+    "name": "Google Feud",
+    "url": "https://googlefeud.com/",
+    "image": "/icons/googlefeud.webp"
+  },
+  {
+    "name": "Minecraft Classic",
+    "url": "https://classic.minecraft.net",
+    "image": "/icons/mc.webp"
+  },
+  {
+    "name": "Learn to Fly 3",
+    "url": "https://www.gameflare.com/embed/learn-to-fly-3/",
+    "image": "/icons/learntofly3.webp"
+  },
+  {
+    "name": "YoHoHo.io",
+    "url": "https://yohoho.io/",
+    "image": "/icons/yohoho.webp"
+  },
+  {
+    "name": "Time Shooter 2",
+    "url": "https://html5.gamedistribution.com/62a72f2da7cb4b609579a47653546e6a/",
+    "image": "/icons/timeshooter2.webp"
+  },
+  {
+    "name": "Merge Fruit",
+    "url": "https://html5.gamedistribution.com/2dee9d404697435aa76111eb4015e1d5/",
+    "image": "/icons/mergefruit.webp"
+  },
+  {
+    "name": "Jetpack Joyride",
+    "url": "https://abinbins.github.io/a7/jetpack-joyride/",
+    "image": "/icons/jetpackjoyride.webp"
+  },
+  {
+    "name": "DOOM",
+    "url": "https://arcader.com/roms/doom.html",
+    "image": "/icons/DOOM.webp"
+  },
+  {
+    "name": "FNAF 2",
+    "url": "https://sussygamedeveloper.github.io/FNAF2/",
+    "image": "/icons/FNAF2.webp"
+  },
+  {
+    "name": "FNAF 3",
+    "url": "https://sussygamedeveloper.github.io/fnaf3/",
+    "image": "/icons/FNAF3.webp"
+  },
+  {
+    "name": "Run 3",
+    "url": "https://www.coolmathgames.com/0-run-3/play",
+    "image": "/icons/run3.webp"
+  },
+  {
+    "name": "Subway Surfers: Rio",
+    "url": "https://html5.gamemonetize.co/4vppm8m74ngl2mwfmixoxmd9ljc9ddms/",
+    "image": "/icons/SF.webp"
+  },
+  {
+    "name": "Survivor.io",
+    "url": "https://html5.gamedistribution.com/rvvASMiM/f1c451e586c04b4c8cba01b0c50d9090/index.html",
+    "image": "/icons/SVI.webp"
+  },
+  {
+    "name": "Slope",
+    "url": "https://slope-online.github.io/slope/",
+    "image": "/icons/slope.webp"
+  },
+  {
+    "name": "Fortnite (Geforce NOW)",
+    "url": "https://play.geforcenow.com/mall/#/deeplink?game-id=46bfab06-d864-465d-9e56-2d9e45cdee0a",
+    "image": "/icons/fortnite.webp"
+  },
+  {
+    "name": "1v1.LOL",
+    "url": "https://1v1-lolunblocked.gitlab.io/file/",
+    "image": "/icons/1v1-lol.webp"
+  },
+  {
+    "name": "Rocket Goal",
+    "url": "https://rocketgoal.io/",
+    "image": "/icons/2D-Rocket-League.webp"
+  },
+  {
+    "name": "Among Us",
+    "url": "https://amongusonline.bitbucket.io/file/",
+    "image": "/icons/scratch-among-us.webp"
+  },
+  {
+    "name": "Basket Random",
+    "url": "https://html5.gamedistribution.com/rvvASMiM/bf1268dccb5d43e7970bb3edaa54afc8/index.html",
+    "image": "/icons/br.webp"
+  },
+  {
+    "name": "Bitlife",
+    "url": "https://xlegends.github.io/bitlife/",
+    "image": "/icons/bitlife.webp"
+  },
+  {
+    "name": "BTD 4",
+    "url": "https://en.gameslol.net/data/bloons-td-4/index.html",
+    "image": "/icons/btd4.webp"
+  },
+  {
+    "name": "Chess.com",
+    "url": "https://chess.com",
+    "image": "/icons/chess.webp"
+  },
+  {
+    "name": "Cluster Rush",
+    "url": "https://clusterrush.io/game/cluster-rush/",
+    "image": "/icons/cluster-rush.webp"
+  },
+  {
+    "name": "Cookie Clicker",
+    "url": "https://unblocked-cookie-clicker.pages.dev/unblocked/",
+    "image": "/icons/cookieclicker.webp"
+  },
+  {
+    "name": "Crossy Road",
+    "url": "https://azgames.io/game/crossy-road/",
+    "image": "/icons/cr.webp"
+  },
+  {
+    "name": "Doge Miner",
+    "url": "https://dogeminer.se",
+    "image": "/icons/doge-miner-1.webp"
+  },
+  {
+    "name": "Drift Boss",
+    "url": "https://www.mortgagecalculator.org/money-games/drift-boss/",
+    "image": "/icons/db.webp"
+  },
+  {
+    "name": "Fallout 2",
+    "url": "https://jonasz-o.itch.io/fallout2remake3d",
+    "image": "/icons/fallout2.webp"
+  },
+  {
+    "name": "Friday Night Funkin",
+    "url": "https://uploads.ungrounded.net/alternate/1528000/1528775_alternate_113347_r141.zip/",
+    "image": "/icons/fnf.webp"
+  },
+  {
+    "name": "FNF - Lofi Mod",
+    "url": "https://fnf.kdata1.com/lofi-funkin/2/",
+    "image": "/icons/lofi.webp"
+  },
+  {
+    "name": "FNF VS. Snorlax",
+    "url": "https://fnf.kdata1.com/snorlax/1/",
+    "image": "/icons/snorlax.webp"
+  },
+  {
+    "name": "JustFall.LOL",
+    "url": "https://just-fall-online.github.io/file/",
+    "image": "/icons/just-fall-lol.webp"
+  },
+  {
+    "name": "Geforce NOW",
+    "url": "https://play.geforcenow.com",
+    "image": "/icons/geforce-now.webp"
+  },
+  {
+    "name": "Hole.IO",
+    "url": "https://hole-io.com/",
+    "image": "/icons/hole.webp"
+  },
+  {
+    "name": "Learn To Fly Idle",
+    "url": "https://www.gameslol.net/data/waflash/index.php?g=635",
+    "image": "/icons/ltf_idle.webp"
+  },
+  {
+    "name": "Monkey Mart",
+    "url": "https://g.igroutka.ru/games/164/TbxXHpG4s8efPVaM/3/monkey_mart/",
+    "image": "/icons/mm.webp"
+  },
+  {
+    "name": "Crazy Cattle",
+    "url": "https://crazy-cattle.co/game/crazy-cattle/",
+    "image": "/icons/crazy.webp"
+  },
+  {
+    "name": "Moto X3M",
+    "url": "https://html5.gamedistribution.com/rvvASMiM/5b0abd4c0faa4f5eb190a9a16d5a1b4c/index.html",
+    "image": "/icons/mx3m.webp"
+  },
+  {
+    "name": "Online Soccer M.",
+    "url": "https://www.onlinesoccermanager.com/",
+    "image": "/icons/osm.webp"
+  },
+  {
+    "name": "Paper.io",
+    "url": "https://paper-io.com/",
+    "image": "/icons/paperio.webp"
+  },
+  {
+    "name": "Pixel Shooter",
+    "url": "https://ubg77.github.io/pixel-shooter/",
+    "image": "/icons/pixel-shooter.webp"
+  },
+  {
+    "name": "Google Baseball",
+    "url": "https://www.google.com/logos/2019/july4th19/r6/july4th19.html",
+    "image": "/icons/googlebaseball.webp"
+  },
+  {
+    "name": "Deal or No Deal",
+    "url": "https://f.kbhgames.com/RS/game.php?r=//f.kbhgames.com/2018/swf/dondeal2.swf",
+    "image": "/icons/deal-or-no-deal.webp"
+  },
+  {
+    "name": "Slither.io",
+    "url": "https://slither.io/",
+    "image": "/icons/slither.webp"
+  },
+  {
+    "name": "Smash Karts",
+    "url": "https://smashkarts.io/",
+    "image": "/icons/smashkarts.webp"
+  },
+  {
+    "name": "Snowball.io",
+    "url": "https://games.crazygames.com/en_US/snowball-io/index.html",
+    "image": "/icons/snowball.webp"
+  },
+  {
+    "name": "Stumble Guys",
+    "url": "https://www.stumbleguys.com/play",
+    "image": "/icons/stumble-guys.webp"
+  },
+  {
+    "name": "Supply Chain Idle",
+    "url": "https://chat.kongregate.com/gamez/0027/1653/live/index.html",
+    "image": "/icons/supplychainlogo.webp"
+  },
+  {
+    "name": "Retro Bowl",
+    "url": "https://freegamesunblocked76.github.io/retro-bowl/",
+    "image": "/icons/retro.webp"
+  },
+  {
+    "name": "Kiomet",
+    "url": "https://kiomet.com",
+    "image": "/icons/kiomet.webp"
+  },
+  {
+    "name": "Vex 7",
+    "url": "https://vex7.gitlab.io/file/",
+    "image": "/icons/vex7.webp"
+  },
+  {
+    "name": "Windows 96",
+    "url": "https://windows96.net",
+    "image": "/icons/windows96.webp"
+  },
+  {
+    "name": "Happy Wheels",
+    "url": "https://html5.gamedistribution.com/55084fdaacba49cbaeeead2464733b72/",
+    "image": "/icons/hw.webp"
+  },
+  {
+    "name": "Google Snake Modded",
+    "url": "https://googlesnakemods.com/v/current/",
+    "image": "/icons/snake.webp"
+  },
+  {
+    "name": "Idle Startup Tycoon",
+    "url": "https://www.mortgagecalculator.org/money-games/idle-startup-tycoon/",
+    "image": "/icons/idlestartup.webp"
+  },
+  {
+    "name": "Two Player Games",
+    "url": "https://www.twoplayergames.org/",
+    "image": "/icons/tpg.webp"
+  },
+  {
+    "name": "Guess the Price",
+    "url": "https://guesstheprice.net/",
+    "image": "/icons/google.webp"
+  },
+  {
+    "name": "Omega Nugget Clicker",
+    "url": "https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec",
+    "image": "/icons/clickerheros.webp"
+  }
 ]
